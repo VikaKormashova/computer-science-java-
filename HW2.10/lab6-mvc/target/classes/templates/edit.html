@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактировать автомобиль</title>
+</head>
+<body>
+<h1>Редактировать автомобиль</h1>
+<form th:action="@{|/cars/${car.id}|}" th:object="${car}" method="post">
+    <input type="hidden" name="_method" value="patch"/>
+    
+    <label>Марка: <input type="text" th:field="*{brand}"/></label><br/>
+    <label>Модель: <input type="text" th:field="*{model}"/></label><br/>
+    <label>Год: <input type="number" th:field="*{year}"/></label><br/>
+    <label>Объём двигателя: <input type="number" step="0.1" th:field="*{engine.volume}"/></label><br/>
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<form th:action="@{|/cars/${car.id}|}" method="post">
+    <input type="hidden" name="_method" value="delete"/>
+    <button type="submit">Удалить</button>
+</form>
+
+<a href="/cars">Назад к списку</a>
+</body>
+</html>

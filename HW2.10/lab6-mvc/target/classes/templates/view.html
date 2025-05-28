@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Просмотр автомобиля</title>
+</head>
+<body>
+<h1 th:text="${car.brand} + ' ' + ${car.model}"></h1>
+<ul>
+    <li>ID: <span th:text="${car.id}"></span></li>
+    <li>Год выпуска: <span th:text="${car.year}"></span></li>
+    <li>Объем двигателя: <span th:text="${car.engine.volume}"></span></li>
+    <li>Тип двигателя: <span th:text="${car.engine.type}"></span></li>
+</ul>
+<a href="/cars">Назад к списку</a>
+</body>
+</html>
