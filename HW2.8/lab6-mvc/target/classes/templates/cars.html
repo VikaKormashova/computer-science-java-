@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список машин</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Список машин</h1>
+    <ul>
+        <li th:each="car : ${cars}">
+            <a th:href="@{'/cars/' + ${car.id}}"
+               th:text="${car.brand + ' ' + car.model + ' (' + car.year + ')'}"></a>
+        </li>
+    </ul>
+</body>
+</html>

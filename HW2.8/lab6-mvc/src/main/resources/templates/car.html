@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Car Information</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>Информация о машине</h1>
+    <p><strong>Бренд:</strong> <span th:text="${car.brand}"></span></p>
+    <p><strong>Модель:</strong> <span th:text="${car.model}"></span></p>
+    <p><strong>Год выпуска:</strong> <span th:text="${car.year}"></span></p>
+
+    <div th:if="${car.engine != null}">
+        <p><strong>Тип двигателя:</strong> <span th:text="${car.engine.type}"></span></p>
+        <p><strong>Объем двигателя:</strong> <span th:text="${car.engine.volume}"></span> л</p>
+    </div>
+</body>
+</html>
