@@ -1,0 +1,37 @@
+<!-- templates/edit.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактировать машину</title>
+</head>
+<body>
+<h2>Редактировать</h2>
+
+<form th:action="@{'/cars/' + ${car.id}}" method="post">
+    <input type="hidden" name="_method" value="patch"/>
+
+    <label>Марка:</label>
+    <input type="text" name="brand" th:value="${car.brand}"/><br>
+
+    <label>Модель:</label>
+    <input type="text" name="model" th:value="${car.model}"/><br>
+
+    <label>Год:</label>
+    <input type="number" name="year" th:value="${car.year}"/><br>
+
+    <label>Тип двигателя:</label>
+    <select name="engineType">
+        <option value="petrol"
+                th:selected="${car.engine.getType() == 'Petrol'}">Бензиновый</option>
+        <option value="diesel"
+                th:selected="${car.engine.getType() == 'Diesel'}">Дизельный</option>
+        <option value="electric"
+                th:selected="${car.engine.getType() == 'Electric'}">Электро</option>
+    </select><br><br>
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<a th:href="@{/cars}">Назад</a>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список машин</title>
+</head>
+<body>
+<h1>Список машин</h1>
+
+<a href="/cars/add">Добавить новую машину</a>
+
+<ul>
+    <li th:each="car : ${cars}">
+        <a th:href="@{/cars/{id}(id=${car.id})}" 
+           th:text="${car.brand} + ' ' + ${car.model} + ' (' + ${car.year} + ') - ' + ${car.engine.volume} + 'L'">
+        </a>
+    </li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Просмотр машины</title>
+</head>
+<body>
+    <h1>Детали машины</h1>
+
+    <p><strong>Марка:</strong> <span th:text="${car.brand}"></span></p>
+    <p><strong>Модель:</strong> <span th:text="${car.model}"></span></p>
+    <p><strong>Год:</strong> <span th:text="${car.year}"></span></p>
+    <p><strong>Тип двигателя:</strong> <span th:text="${car.engine.getType()}"></span></p>
+    <p><strong>Объем двигателя:</strong> <span th:text="${car.engine.volume}"></span></p>
+
+    <hr>
+
+    <a th:href="@{'/cars/' + ${car.id} + '/edit'}">
+        <button>✏️ Редактировать</button>
+    </a>
+
+    <form th:action="@{'/cars/' + ${car.id}}" method="post" style="display:inline;">
+        <input type="hidden" name="_method" value="delete"/>
+        <button type="submit" onclick="return confirm('Удалить машину?')">🗑️ Удалить</button>
+    </form>
+
+    <br><br>
+    <a href="/cars">⬅ Назад к списку</a>
+</body>
+</html>

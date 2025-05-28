@@ -1,0 +1,32 @@
+<!-- templates/add-car.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Добавить машину</title>
+</head>
+<body>
+<h2>Добавить машину</h2>
+
+<form th:action="@{/cars}" method="post">
+    <label>Марка:</label>
+    <input type="text" name="brand"/><br>
+
+    <label>Модель:</label>
+    <input type="text" name="model"/><br>
+
+    <label>Год:</label>
+    <input type="number" name="year"/><br>
+
+    <label>Тип двигателя:</label>
+    <select name="engineType">
+        <option value="petrol">Бензиновый</option>
+        <option value="diesel">Дизельный</option>
+        <option value="electric">Электро</option>
+    </select><br><br>
+
+    <button type="submit">Добавить</button>
+</form>
+
+<a th:href="@{/cars}">Назад к списку</a>
+</body>
+</html>
