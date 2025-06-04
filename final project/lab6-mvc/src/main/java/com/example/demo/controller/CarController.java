@@ -21,10 +21,12 @@ public class CarController {
 
     // Список всех машин
     @GetMapping
-    public String listCars(Model model) {
-        model.addAttribute("cars", carRepository.findAll());
+    public String listCars(@RequestParam(required = false) String brand, Model model) {
+        model.addAttribute("cars", carRepository.findByBrand(brand));
+        model.addAttribute("filterBrand", brand); 
         return "list";
     }
+
 
     // Просмотр конкретной машины
     @GetMapping("/{id}")
@@ -101,4 +103,5 @@ public class CarController {
         carRepository.deleteById(id);
         return "redirect:/cars";
     }
+   
 }

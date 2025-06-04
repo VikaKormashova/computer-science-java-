@@ -62,4 +62,13 @@ public class CarRepository {
     public void deleteById(int id) {
         cars.removeIf(car -> car.getId() == id);
     }
+    public List<Car> findByBrand(String brand) {
+        if (brand == null || brand.isBlank()) {
+            return findAll();
+        }
+        return cars.stream()
+                .filter(car -> car.getBrand().toLowerCase().contains(brand.toLowerCase()))
+                .toList();
+    }
+
 }
